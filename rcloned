@@ -22,8 +22,6 @@ Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_p
 Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 RETVAL=0
-
-
 check_local(){
 	if [ ! -d "$LOCAL" ]; then
 	    echo "The directory $LOCAL does not exist."
