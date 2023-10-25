@@ -97,3 +97,13 @@ restart(){
 	sleep 2s
 	do_start
 }
+
+case "$1" in
+	start|stop|restart|status)
+	do_$1
+	;;
+	*)
+	echo "使用方法: $0 { start | stop | restart | status }"
+	RETVAL=1
+	;;
+esac
