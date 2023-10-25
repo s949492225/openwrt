@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/bin/bash /etc/rc.common
+
+START=99
+STOP=9
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
@@ -42,7 +45,6 @@ check_running(){
 }
 do_start(){
 	echo "$NAME_BIN 开始启动"
-	sleep 2
 	check_local
 	if [[ $? -eq 0 ]]; then
 		echo "rclone The directory $LOCAL does not exist." && exit 0
