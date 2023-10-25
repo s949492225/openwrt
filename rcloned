@@ -23,14 +23,6 @@ Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 RETVAL=0
 
-check_running(){
-	PID="$(pidof $NAME_BIN | awk '{print $1}')"
-	if [[ ! -z ${PID} ]]; then
-		return 0
-	else
-		return 1
-	fi
-}
 
 check_local(){
 	if [ ! -d "$LOCAL" ]; then
@@ -40,7 +32,14 @@ check_local(){
 		return 0
 	fi
 }
-
+check_running(){
+	PID="$(pidof $NAME_BIN | awk '{print $1}')"
+	if [[ ! -z ${PID} ]]; then
+		return 0
+	else
+		return 1
+	fi
+}
 do_start(){
 	echo "$NAME_BIN 开始启动"
 	sleep 2
