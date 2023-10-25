@@ -1,6 +1,6 @@
 #!/bin/bash /etc/rc.common
 
-START=99
+START=100
 STOP=9
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
@@ -24,8 +24,6 @@ LOG="/$HOME/.rclone/rcloned.log"
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
-RETVAL=0
-
 
 check_local(){
 	if [ ! -d "$LOCAL" ]; then
@@ -71,39 +69,14 @@ stop(){
 	check_running
 	if [[ $? -eq 0 ]]; then
 		kill -9 ${PID}
-		RETVAL=$?
-		if [[ $RETVAL -eq 0 ]]; then
-			echo -e "${Info} $NAME_BIN 停止成功 !"
-		else
-			echo -e "${Error} $NAME_BIN 停止失败 !"
-		fi
 	else
 		echo -e "${Info} $NAME_BIN 未运行"
-		RETVAL=1
 	fi
 	fusermount -zuq $LOCAL >/dev/null 2>&1
 }
-status(){
-	check_running
-	if [[ $? -eq 0 ]]; then
-		echo -e "${Info} $NAME_BIN (PID $(echo ${PID})) 正在运行..."
-	else
-		echo -e "${Info} $NAME_BIN 未运行 !"
-		RETVAL=1
-	fi
-}
+
 restart(){
 	do_stop
 	sleep 2s
 	do_start
 }
-
-case "$1" in
-	start|stop|restart|status)
-	do_$1
-	;;
-	*)
-	echo "使用方法: $0 { start | stop | restart | status }"
-	RETVAL=1
-	;;
-esac
