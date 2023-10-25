@@ -43,7 +43,7 @@ check_running(){
 		return 1
 	fi
 }
-do_start(){
+start(){
 	echo "$NAME_BIN 开始启动"
 	check_local
 	if [[ $? -eq 0 ]]; then
@@ -67,7 +67,7 @@ do_start(){
 	fi
 }
 
-do_stop(){
+stop(){
 	check_running
 	if [[ $? -eq 0 ]]; then
 		kill -9 ${PID}
@@ -83,7 +83,7 @@ do_stop(){
 	fi
 	fusermount -zuq $LOCAL >/dev/null 2>&1
 }
-do_status(){
+status(){
 	check_running
 	if [[ $? -eq 0 ]]; then
 		echo -e "${Info} $NAME_BIN (PID $(echo ${PID})) 正在运行..."
@@ -92,17 +92,8 @@ do_status(){
 		RETVAL=1
 	fi
 }
-do_restart(){
+restart(){
 	do_stop
 	sleep 2s
 	do_start
 }
-case "$1" in
-	start|stop|restart|status)
-	do_$1
-	;;
-	*)
-	echo "使用方法: $0 { start | stop | restart | status }"
-	RETVAL=1
-	;;
-esac
