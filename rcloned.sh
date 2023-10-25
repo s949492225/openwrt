@@ -46,6 +46,7 @@ do_start(){
 	check_local
 	if [[ $? -eq 0 ]]; then
 		echo "rclone The directory $LOCAL does not exist." && exit 0
+	fi
 	check_running
 	if [[ $? -eq 0 ]]; then
 		echo -e "${Info} $NAME_BIN (PID ${PID}) 正在运行..." && exit 0
@@ -63,6 +64,7 @@ do_start(){
 		fi
 	fi
 }
+
 do_stop(){
 	check_running
 	if [[ $? -eq 0 ]]; then
