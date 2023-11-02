@@ -7,12 +7,69 @@
 # Default-Stop:      0 1 6
 # Short-Description: Start rclone at boot time
 # Description:       Enable rclone by daemon.
-# 启动项添加 bash /etc/init.d/rcloned start
 ### END INIT INFO
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
  
-REMOTE='aliyunwebdav:/ '
-LOCAL='/disk/ssda/Public/aliyun'
+REMOTE='gdnf:/'#!/bin/bash
+### 脚本不是我写的，仅仅修改了一部分内容，原作者不晓得是谁！
+### 教程地址 https://v2rayssr.com/openwrt-emby.html
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+NAME='rclone'
+REMOTE='aliyun:/ '   # Rclone配置时填写的 name
+LOCAL='/aliyun'  # 挂载地址，VPS本地挂载目录
+CONFIG='/root/.config/rclone/rclone.conf'  # Rclone 的配置文件地址
+
+Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
+Info="${Green_font_prefix}[信息]${Font_color_suffix}"
+Error="${Red_font_prefix}[错误]${Font_color_suffix}"
+ 
+[ -n "$REMOTE" ] || exit 1;
+[ -x "$(which fusermount)" ] || exit 1;
+[ -x "$(which $NAME)" ] || exit 1;
+ 
+case "$1" in
+start)
+  ps -ef |grep -v grep |grep -q "$REMOTE"
+  [ $? -eq '0' ] && {
+    NAME_PID="$(ps -C $NAME -o pid= |head -n1 |grep -o '[0-9]\{1,\}')"
+    [ -n "$NAME_PID" ] && echo -e "${Info} $NAME [ID:$NAME_PID] 正在运行...";
+    exit 1;
+  }
+  fusermount -zuq $LOCAL >/dev/null 2>&1
+  mkdir -p $LOCAL
+  rclone mount $REMOTE $LOCAL --config $CONFIG --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
+  sleep 3;
+  NAME_PID="$(ps -C $NAME -o pid=|head -n1 |grep -o '[0-9]\{1,\}')"
+  [ -n "$NAME_PID" ] && {
+    echo -ne "${Info} $NAME 启动成功...[ID:$NAME_PID]\n$REMOTE --> $LOCAL\n\n"
+    exit 0;
+  } || {
+    echo -e "${Info} $NAME 启动失败! "
+    exit 1;
+  }
+  ;;
+stop)
+  NAME_PID="$(ps -C $NAME -o pid= |head -n1 |grep -o '[0-9]\{1,\}')"
+  [ -z "$NAME_PID" ] && echo -e "${Info} $NAME 未运行..."
+  [ -n "$NAME_PID" ] && kill -9 $NAME_PID >/dev/null 2>&1
+  [ -n "$NAME_PID" ] && echo -e "${Info} $NAME 停止成功...[ID:$NAME_PID]"
+  fusermount -zuq $LOCAL >/dev/null 2>&1
+  ;;
+init)
+  fusermount -zuq $LOCAL
+  rm -rf $LOCAL;
+  mkdir -p $LOCAL;
+  chmod a+x $0;
+  update-rc.d -f $(basename $0) remove;
+  update-rc.d -f $(basename $0) defaults;
+  rclone config;
+  ;;
+esac
+ 
+exit 0
+LOCAL='/volume1/GDNF'
 CONFIG='/root/.config/rclone/rclone.conf'
 DEMO='rclone'
  
@@ -30,8 +87,7 @@ start)
   }
   fusermount -zuq $LOCAL >/dev/null 2>&1
   mkdir -p $LOCAL
-  rclone mount $REMOTE $LOCAL --config $CONFIG --cache-dir /disk/ssda/Caches/rclone --allow-other --vfs-cache-mode writes --allow-non-empty --header "Referer:https://www.aliyundrive.com/" >/dev/null 2>&1 &
-#  rclone mount $REMOTE $LOCAL --config $CONFIG --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
+  rclone mount $REMOTE $LOCAL --config $CONFIG --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
   sleep 3;
   DEMOPID="$(ps -C $DEMO -o pid=|head -n1 |grep -o '[0-9]\{1,\}')"
   [ -n "$DEMOPID" ] && {
