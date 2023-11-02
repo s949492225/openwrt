@@ -18,7 +18,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 NAME='rclone'
 REMOTE='aliyun:/ '   # Rclone配置时填写的 name
-LOCAL='/aliyun'  # 挂载地址，VPS本地挂载目录
+LOCAL='/mnt/aliyun'  # 挂载地址，VPS本地挂载目录
 CONFIG='/root/.config/rclone/rclone.conf'  # Rclone 的配置文件地址
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -39,7 +39,7 @@ start)
   }
   fusermount -zuq $LOCAL >/dev/null 2>&1
   mkdir -p $LOCAL
-  rclone mount $REMOTE $LOCAL --config $CONFIG --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
+  rclone mount $REMOTE $LOCAL --config $CONFIG --copy-links --no-gzip-encoding --no-check-certificate --allow-other --buffer-size 200M --cache-dir /other/Caches/aliyun --allow-non-empty --umask 000 >/dev/null 2>&1 &
   sleep 3;
   NAME_PID="$(ps -C $NAME -o pid=|head -n1 |grep -o '[0-9]\{1,\}')"
   [ -n "$NAME_PID" ] && {
