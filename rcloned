@@ -39,7 +39,7 @@ start)
   }
   fusermount -zuq $LOCAL >/dev/null 2>&1
   mkdir -p $LOCAL
-  rclone mount  $REMOTE $LOCAL --config $CONFIG --vfs-cache-mode writes --cache-dir /other/Caches/aliyun --network-mode --no-update-modtime --no-check-certificate --default-permissions --header "Referer:https://www.aliyundrive.com/" --vfs-read-chunk-size-limit 4G --vfs-read-chunk-size 64M --dir-cache-time 12h --buffer-size 32M --ignore-checksum --no-gzip-encoding --allow-non-empty --copy-links --umask 000 >/dev/null 2>&1 &
+  rclone mount  $REMOTE $LOCAL --config $CONFIG --use-mmap --vfs-cache-mode writes --cache-dir /other/Caches/aliyun --no-update-modtime --no-check-certificate --default-permissions --header "Referer:https://www.aliyundrive.com/" --vfs-read-chunk-size-limit 64M --vfs-read-chunk-size 16M --dir-cache-time 12h --buffer-size 512M --ignore-checksum --no-gzip-encoding --allow-non-empty --copy-links --umask 000 >/dev/null 2>&1 &
   sleep 3;
   NAME_PID="$(ps -C $NAME -o pid=|head -n1 |grep -o '[0-9]\{1,\}')"
   [ -n "$NAME_PID" ] && {
