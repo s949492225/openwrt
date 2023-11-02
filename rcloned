@@ -39,7 +39,7 @@ start)
   }
   fusermount -zuq $LOCAL >/dev/null 2>&1
   mkdir -p $LOCAL
-  rclone mount $REMOTE $LOCAL --no-update-modtime --config $CONFIG --copy-links --no-gzip-encoding --no-check-certificate --allow-other --buffer-size 200M --cache-dir /other/Caches/aliyun --allow-non-empty --umask 000 >/dev/null 2>&1 &
+  rclone mount $REMOTE $LOCAL --config $CONFIG --copy-links --no-gzip-encoding --no-check-certificate --allow-other --buffer-size 200M --cache-dir /other/Caches/aliyun --allow-non-empty --umask 000 >/dev/null 2>&1 &
   sleep 3;
   NAME_PID="$(ps -C $NAME -o pid=|head -n1 |grep -o '[0-9]\{1,\}')"
   [ -n "$NAME_PID" ] && {
