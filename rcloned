@@ -19,7 +19,7 @@ RCLONE_OPTS=(
   "--header=Referer:https://www.aliyundrive.com/"
   "--vfs-read-chunk-size-limit=128M"
   "--vfs-read-chunk-size=16M"
-  "--dir-cache-time=12h"
+  "--dir-cache-time=60s"
   "--buffer-size=1G"
   "--ignore-checksum"
   "--no-gzip-encoding"
