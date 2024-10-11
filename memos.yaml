@@ -1,0 +1,11 @@
+version: "3.0"
+services:
+  memos:
+    image: ghcr.io/usememos/memos:latest
+    container_name: memos
+    network_mode: bridge
+    restart: unless-stopped
+    volumes:
+      - /other/Configs/memos/:/var/opt/memos
+    ports:
+      - 5230:5230

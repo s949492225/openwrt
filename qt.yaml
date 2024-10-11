@@ -1,0 +1,23 @@
+version: "2.0"
+services:
+  qbittorrentee:
+    image: ddsderek/qbittorrentee:latest-iyuu
+    container_name: qbittorrentee
+
+    network_mode: host
+    hostname: qbittorrentee
+    volumes:
+      - /other/Configs/qbittorren:/data
+      - /other/Configs/iyuu:/iyuu
+      - /other/ic:/ic
+      - /mnt/sdba/downloads:/downloads
+    tmpfs:
+      - /tmp
+    environment:          # 下面未列出的其他环境变量请根据环境变量清单自行添加
+      - WEBUI_PORT=8082   # WEBUI控制端口，可自定义
+      - BT_PORT=56191     # BT监听端口，可自定义
+      - PUID=0         # 输入id -u可查询，群晖必须改
+      - PGID=0          # 输入id -g可查询，群晖必须改
+      - QB_USERNAME=root
+      - QB_PASSWORD=qaz741
+    restart: unless-stopped

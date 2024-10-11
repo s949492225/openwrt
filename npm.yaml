@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    container_name: nginx-proxy-manager
+    ports:
+
+      - '22280:80'
+      - '22443:443'
+      - '22281:81'
+    network_mode: bridge
+    environment:
+      DISABLE_IPV6: 'true'
+    volumes:
+      - /other/compose/data:/data
+      - /other/compose/letsencrypt:/etc/letsencrypt

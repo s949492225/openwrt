@@ -1,0 +1,17 @@
+version: "3"
+services:
+    server:
+        image: vaultwarden/server:latest
+        container_name: bitwarden
+        network_mode: bridge
+        restart: unless-stopped
+        ports:
+            - 8180:80
+            - 3012:3012        
+        environment:
+            - SIGNUPS_ALLOWED=true
+            - WEB_VAULT_ENABLED=true
+            - DOMAIN=https://password.syiyi.site:22443
+        volumes:
+            - /other/Configs/bitwarden/data:/data
+        

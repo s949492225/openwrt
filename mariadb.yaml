@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mariadb:
+    restart: always
+    image: mariadb
+    container_name: mariadb
+    network_mode: bridge
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: si6012628
+      TZ: Asia/Shanghai
+    volumes:
+      - /other/Configs/mariadb/data:/var/lib/mysql
+      - /other/Configs/mariadb/conf/mariadb:/etc/mysql

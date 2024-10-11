@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: nyanmisaka/jellyfin:latest
+    container_name: jellyfin
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - /other/Configs/Jellyfin:/config
+      - /other/Caches/Jellyfin:/cache
+      - /mnt:/media
+    restart: unless-stopped
