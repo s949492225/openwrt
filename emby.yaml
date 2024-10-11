@@ -1,0 +1,19 @@
+version: '3' 
+
+services:
+  emby:
+    image: xinjiawei1/emby_unlockd:stable
+    container_name: emby               # 容器名称设置为 emby
+    restart: always                    # 容器总是重新启动
+    network_mode: host
+    ports:
+      - '8096:8096'                   # 将容器的 8096 端口映射到主机的 8096 端口
+    volumes:
+      - /other/Configs/Emby:/config # Configuration directory
+      - /mnt:/mnt # Media directory
+    environment:
+      - UID=0                         # 设置容器用户 ID 为 0 (通常是 root)
+      - GID=0                         # 设置容器组 ID 为 0 (通常是 root)
+      - GIDLIST=0                     # 设置容器组 ID 列表为 0
+    devices:
+      - /dev/dri:/dev/dri             # 将主机的 /dev/dri 设备挂载到容器
