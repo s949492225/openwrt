@@ -1,0 +1,23 @@
+version: '3'
+services:
+  xunlei:
+    container_name: xunlei
+    image: registry.cn-shenzhen.aliyuncs.com/cnk3x/xunlei:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+      - XL_DEBUG=false
+      - XL_DASHBOARD_PORT=2345
+      - XL_DASHBOARD_USERNAME=
+      - XL_DIR_DOWNLOAD=/xunlei/downloads
+      - XL_DIR_DATA=/xunlei/data
+      - XL_DASHBOARD_PASSWORD=
+      - XL_CHROOT=/xunlei
+      - XL_PREVENT_UPDATE=true
+      - XL_UID=
+      - XL_GID=
+    volumes:
+      - /mnt/sdba/downloads:/xunlei/downloads
+      - /other/Configs/Xunlei:/xunlei/data
+    network_mode: host
+
