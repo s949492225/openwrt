@@ -5,7 +5,6 @@ services:
     restart: unless-stopped
     container_name: nginx-proxy-manager
     ports:
-
       - '22280:80'
       - '22443:443'
       - '22281:81'
@@ -13,5 +12,5 @@ services:
     environment:
       DISABLE_IPV6: 'true'
     volumes:
-      - /other/compose/data:/data
-      - /other/compose/letsencrypt:/etc/letsencrypt
+      - /other/Configs/npm:/data
+      - /other/Configs/letsencrypt:/etc/letsencrypt
