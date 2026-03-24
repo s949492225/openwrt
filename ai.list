@@ -1,0 +1,157 @@
+# =====================================
+# AI平台-国外（高识别率·精确优先版）
+# =====================================
+
+################################
+# 🔴 一、核心LLM平台（必须命中）
+################################
+
+# OpenAI
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN,api.openai.com
+DOMAIN,platform.openai.com
+DOMAIN,sora.chatgpt.com
+
+# Anthropic
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claudeusercontent.com
+
+# Google AI
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,ai.google.dev
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-SUFFIX,googleapis.com
+
+# Microsoft Copilot
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
+DOMAIN-SUFFIX,githubcopilot.com
+
+# xAI
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,grok.com
+DOMAIN,console.x.ai
+
+# Mistral
+DOMAIN-SUFFIX,mistral.ai
+DOMAIN,console.mistral.ai
+
+# Perplexity
+DOMAIN-SUFFIX,perplexity.ai
+
+# Meta AI
+DOMAIN-SUFFIX,meta.ai
+
+
+################################
+# 🔴 二、模型 / API平台（高价值）
+################################
+
+DOMAIN-SUFFIX,openrouter.ai
+DOMAIN-SUFFIX,replicate.com
+DOMAIN-SUFFIX,cohere.com
+DOMAIN-SUFFIX,fireworks.ai
+DOMAIN-SUFFIX,deepinfra.com
+DOMAIN-SUFFIX,anyscale.com
+
+# HuggingFace（模型生态核心）
+DOMAIN-SUFFIX,huggingface.co
+DOMAIN-SUFFIX,hf.co
+
+
+################################
+# 🔴 三、生成式AI（图像/视频/音频）
+################################
+
+# Midjourney（核心图像AI）  [oai_citation:0‡维基百科](https://en.wikipedia.org/wiki/Midjourney?utm_source=chatgpt.com)
+DOMAIN-SUFFIX,midjourney.com
+
+# Stability
+DOMAIN-SUFFIX,stability.ai
+
+# Runway（视频）
+DOMAIN-SUFFIX,runwayml.com
+
+# ElevenLabs（语音）
+DOMAIN-SUFFIX,elevenlabs.io
+
+# Leonardo / Playground
+DOMAIN-SUFFIX,leonardo.ai
+DOMAIN-SUFFIX,playgroundai.com
+DOMAIN-SUFFIX,clipdrop.co
+
+
+################################
+# 🔴 四、AI工具平台（真实流量高）
+################################
+
+# Poe / Character / Pi
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,character.ai
+DOMAIN-SUFFIX,c.ai
+DOMAIN-SUFFIX,pi.ai
+DOMAIN-SUFFIX,inflection.ai
+
+# Cursor
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+
+# Lovart（已确认多域分发）
+DOMAIN-SUFFIX,lovart.ai
+DOMAIN-SUFFIX,lovart.me
+DOMAIN-SUFFIX,lovart.fun
+DOMAIN-SUFFIX,lovart.info
+
+
+################################
+# 🔴 五、AI Agent / 新平台（增长快）
+################################
+
+DOMAIN-SUFFIX,manus.im
+DOMAIN-SUFFIX,flowith.io
+DOMAIN-SUFFIX,phind.com
+DOMAIN-SUFFIX,hyperwriteai.com
+
+# （这些属于新一代AI工具，增长很快）  [oai_citation:1‡Exploding Topics](https://explodingtopics.com/blog/most-popular-ai-tools?utm_source=chatgpt.com)
+
+
+################################
+# 🔴 六、设计 / 创作类AI（流量大）
+################################
+
+DOMAIN-SUFFIX,canva.com
+DOMAIN-SUFFIX,remove.bg
+DOMAIN-SUFFIX,cleanup.pictures
+
+################################
+# 🔴 七、语音 / 多模态补充
+################################
+
+DOMAIN-SUFFIX,play.ht
+DOMAIN-SUFFIX,resemble.ai
+DOMAIN-SUFFIX,descript.com
+
+
+################################
+# 🟡 八、AI托管平台（有限增强）
+################################
+
+# ⚠️ 只保留最关键的，不泛滥
+DOMAIN-SUFFIX,vercel.app
+DOMAIN-SUFFIX,workers.dev
+
+
+################################
+# ⚫ 九、AI依赖服务（登录/风控）
+################################
+
+DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,auth0.com
+DOMAIN-SUFFIX,identrust.com
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
