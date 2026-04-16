@@ -1,0 +1,70 @@
+{
+  "title": "syiyi的瑟瑟模块",
+  "description": "来自 s949492225/openwrt 的 FWD 模块合集",
+  "icon": "https://raw.githubusercontent.com/MakkaPakka518/FW/refs/heads/main/widgets/tubiao/makka.png",
+  "widgets": [
+    {
+      "id": "91porny_int",
+      "title": "91Porny",
+      "description": "91Porny",
+      "requiredVersion": "0.0.1",
+      "version": "0.9.6",
+      "author": "網路",
+      "url": "https://raw.githubusercontent.com/s949492225/openwrt/main/91porny_int.js"
+    },
+    {
+      "id": "Bitch",
+      "title": "Bitch Lives",
+      "description": "Bitch Lives",
+      "requiredVersion": "0.0.1",
+      "version": "1.0.0",
+      "author": "Discount Code：VEUS",
+      "url": "https://raw.githubusercontent.com/s949492225/openwrt/main/NSFW-LIVE.js"
+    },
+    {
+      "id": "jable_int",
+      "title": "Jable",
+      "description": "修复声音&恢复大量分类",
+      "requiredVersion": "0.0.2",
+      "version": "1.3.0",
+      "author": "nibiru｜MakkaPakka｜蝴蝶",
+      "url": "https://raw.githubusercontent.com/s949492225/openwrt/main/jable.js"
+    },
+    {
+      "id": "javday_int",
+      "title": "JAVDay",
+      "description": "網路收集到的模塊",
+      "requiredVersion": "0.0.1",
+      "version": "1.2.0",
+      "author": "Ti",
+      "url": "https://raw.githubusercontent.com/s949492225/openwrt/main/javday_int.js"
+    },
+    {
+      "id": "missav_makka_play",
+      "title": "MissAV_ovo",
+      "description": "简易的missav模块",
+      "requiredVersion": "0.0.1",
+      "version": "2.1.1",
+      "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
+      "url": "https://raw.githubusercontent.com/s949492225/openwrt/main/missavovo.js"
+    },
+    {
+      "id": "Pornhub_int",
+      "title": "Pornhub",
+      "description": "網路收集到的模塊",
+      "requiredVersion": "0.0.1",
+      "version": "1.1.5",
+      "author": "海带",
+      "url": "https://raw.githubusercontent.com/s949492225/openwrt/main/pornhub_int.js"
+    },
+    {
+      "id": "xvideos_int",
+      "title": "XVideos",
+      "description": "網路收集到的模塊",
+      "requiredVersion": "0.0.1",
+      "version": "0.9.6",
+      "author": "網路",
+      "url": "https://raw.githubusercontent.com/s949492225/openwrt/main/xvideos_int.js"
+    }
+  ]
+}
